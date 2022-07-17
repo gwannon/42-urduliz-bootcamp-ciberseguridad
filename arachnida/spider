@@ -1,0 +1,28 @@
+#!/usr/bin/php
+<?php
+print_r($argv);
+
+
+$url = "http://www.enutt.net";
+
+
+
+$html = file_get_contents($url);
+$dom = new DOMDocument();
+$dom->loadHTML($html);
+$dom->preserveWhiteSpace = false;
+$images = $dom->getElementsByTagName('img');
+foreach ($images as $image) {
+  echo $image->getAttribute('src')."\n";
+}
+
+
+
+
+
+
+/*
+ wget -nd -r -l 5 -P ./ -A jpeg,jpg,bmp,gif,png http://www.enutt.net
+ */
+
+ ?>
